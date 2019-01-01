@@ -1,0 +1,35 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://${DB_USER}:${DB_PASSWORD}@ds125914.mlab.com:25914/aerine
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: ERROR
+    org.springframework.security: ERROR
+    com.arturo.aerineapi: INFO
+
+security:
+  oauth2:
+    resource:
+      filterOrder: 3
+  signingKey: HolaHola
+  encodingStrength: 256
+  securityRealm: HolaRealm
+  jwt:
+    clientId: clientId
+    clientSecret: "clientSecret"
+    grantType: password
+    scopeRead: read
+    scopeWrite: write
+    resourceIds: oauth2-server
+  cors:
+    origin: "http://localhost:8100"
+    header: "Authorization"
+    method: "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    credential: true
+
+server:
+  contextPath: /aerine-api
+  port: 8080
