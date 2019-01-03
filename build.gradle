@@ -24,7 +24,7 @@ apply plugin: "jacoco"
 
 group = 'com.arturo'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11.0
+sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()

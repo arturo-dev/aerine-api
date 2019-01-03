@@ -7,16 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 
 import com.arturo.aerineapi.game.player.Player;
-import com.arturo.aerineapi.security.operation.OperationControl;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -61,6 +58,4 @@ public class User {
     @JsonProperty(access = Access.WRITE_ONLY)
     private Date creation;
 
-    @DBRef
-    private Player player;
 }

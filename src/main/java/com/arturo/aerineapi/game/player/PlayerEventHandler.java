@@ -1,9 +1,9 @@
 package com.arturo.aerineapi.game.player;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
-import com.arturo.aerineapi.user.User;
-import com.arturo.aerineapi.user.UserRepository;
 import com.arturo.aerineapi.security.SecurityService;
 import com.arturo.aerineapi.security.operation.OperationSecure;
 
@@ -24,30 +24,22 @@ public class PlayerEventHandler {
     private static final Logger logger = LoggerFactory.getLogger(PlayerEventHandler.class);
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
     private SecurityService securityService;
 
     @HandleBeforeCreate
     public void handleBeforeCreate(@Valid Player player) {
-        player.setResources(new PlayerResources());
+        String name = String.format("[%s] %s", player.getServer().getName(), UUID.randomUUID().toString());
+
+        player.setName(name);
+        player.setUser(securityService.getUser());
+
         logger.info("Creating {}", player);
     }
 
     @HandleAfterCreate
     @OperationSecure
     public void handleAfterCreate(Player player) {
-        String username = securityService.getAuth().getName();
-
-        logger.info("Updating user {} to set player {}", username, player.getId());
-        User user = userRepository.save(
-            User
-                .builder()
-                .username(username)
-                .player(player)
-                .build());
-        logger.info("Updated user {}", user);
+        logger.info("Created {}", player);
     }
 
     @HandleBeforeSave

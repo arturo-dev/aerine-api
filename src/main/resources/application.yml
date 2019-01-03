@@ -2,13 +2,18 @@ spring:
   data:
     mongodb:
       uri: mongodb://${DB_USER}:${DB_PASSWORD}@ds125914.mlab.com:25914/aerine
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
 
 logging:
   level:
     ROOT: INFO
-    org.springframework.web: ERROR
-    org.springframework.security: ERROR
-    com.arturo.aerineapi: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.data: DEBUG
+    com.arturo.aerineapi: DEBUG
 
 security:
   oauth2:
@@ -33,3 +38,7 @@ security:
 server:
   contextPath: /aerine-api
   port: 8080
+
+game:
+  servers:
+    -  "Server 1"

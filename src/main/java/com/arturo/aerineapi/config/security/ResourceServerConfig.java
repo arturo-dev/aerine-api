@@ -36,6 +36,10 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             .antMatchers("/webjars/**").permitAll()
             .antMatchers(HttpMethod.POST, "/players").permitAll()
             .antMatchers(HttpMethod.DELETE, "/users/**").denyAll()
+            .antMatchers(HttpMethod.POST, "/servers/**").denyAll()
+            .antMatchers(HttpMethod.PATCH, "/servers/**").denyAll()
+            .antMatchers(HttpMethod.PUT, "/servers/**").denyAll()
+            .antMatchers(HttpMethod.DELETE, "/servers/**").denyAll()
             .antMatchers("/**").permitAll();
     }
 }
