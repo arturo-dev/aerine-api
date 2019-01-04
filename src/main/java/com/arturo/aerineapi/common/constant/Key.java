@@ -7,6 +7,13 @@ public final class Key {
 
         private Security() {}
     }
+    
+    public final class Validation {
+    	public static final String PLAYER_REQUIRED = "Player.Required";
+    	public static final String PLAYER_INVALID_LEVEL = "Player.Invalid.Level";
+    	
+    	private Validation() {}
+    }
 
     private Key() {}
 }

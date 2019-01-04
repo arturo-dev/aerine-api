@@ -2,16 +2,6 @@ package com.arturo.aerineapi.user;
 
 import java.util.Arrays;
 import java.util.Date;
-import java.util.UUID;
-
-import javax.validation.Valid;
-
-import com.arturo.aerineapi.game.player.Player;
-import com.arturo.aerineapi.game.player.PlayerRepository;
-import com.arturo.aerineapi.security.operation.Operation;
-import com.arturo.aerineapi.security.operation.OperationControl;
-import com.arturo.aerineapi.security.operation.OperationRepository;
-import com.arturo.aerineapi.security.operation.OperationSecure;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +13,10 @@ import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import com.arturo.aerineapi.security.operation.Operation;
+import com.arturo.aerineapi.security.operation.OperationControl;
+import com.arturo.aerineapi.security.operation.OperationRepository;
 
 @Component
 @RepositoryEventHandler(User.class)

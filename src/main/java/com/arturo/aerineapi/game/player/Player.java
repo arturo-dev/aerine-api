@@ -27,18 +27,20 @@ public class Player {
     private ObjectId id;
 
     private String name;
+    
+    private Integer level;
 
-    @DBRef
+    @DBRef(lazy = true)
     private User user;
 
-    @DBRef
+    @DBRef(lazy = true)
     @NotNull(message = "Player.Server.Required")
     private Server server;
 
-    @DBRef
+    @DBRef(lazy = true)
     private Guild guild;
     
-    @DBRef
+    @DBRef(lazy = true)
     private Collection<Village> villages;
 
 }

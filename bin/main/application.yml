@@ -41,4 +41,5 @@ server:
 
 game:
   servers:
-    -  "Server 1"
+    - "Server 1"
+    - "Server 2"

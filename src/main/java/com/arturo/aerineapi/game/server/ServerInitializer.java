@@ -1,17 +1,19 @@
 package com.arturo.aerineapi.game.server;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import com.arturo.aerineapi.game.map.MapService;
 
 @Component
 public class ServerInitializer implements InitializingBean {
 
     @Autowired
     private ServerRepository serverRepository;
+    
+    @Autowired
+    private MapService mapService;
 
     @Autowired
     private ServersList servers;
@@ -25,6 +27,7 @@ public class ServerInitializer implements InitializingBean {
                     Server
                         .builder()
                         .name(serverName)
+                        .map(mapService.generateNewMap())
                         .build()
                 );
             }

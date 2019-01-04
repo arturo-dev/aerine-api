@@ -3,6 +3,7 @@ package com.arturo.aerineapi.exception;
 import com.arturo.aerineapi.exception.error.ErrorMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ResourceNotFoundException;
 import org.springframework.data.rest.core.RepositoryConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,18 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
                 .exception(ex.getClass().getSimpleName())
                 .build(),
             HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> handleNotFound(ResourceNotFoundException ex) {
+        ex.printStackTrace();
+        return new ResponseEntity<>(
+            ExceptionDTO
+                .builder()
+                .status(HttpStatus.NOT_FOUND)
+                .exception(ex.getClass().getSimpleName())
+                .build(),
+            HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(ExceptionRest.class)

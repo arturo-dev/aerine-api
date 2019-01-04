@@ -5,6 +5,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+
+import com.arturo.aerineapi.game.map.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +27,8 @@ public class Server {
     private ObjectId id;
 
     private String name;
+    
+    @DBRef(lazy = true)
+    private Map map;
 
 }

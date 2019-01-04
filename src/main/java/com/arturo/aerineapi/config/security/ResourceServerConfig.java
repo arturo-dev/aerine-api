@@ -34,6 +34,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             .antMatchers("/actuator/**", "/api-docs/**").permitAll()
             .antMatchers("/swagger-ui.html", "/swagger-resources/**", "/v2/api-docs/**").permitAll()
             .antMatchers("/webjars/**").permitAll()
+            .antMatchers(HttpMethod.DELETE).denyAll()
             .antMatchers(HttpMethod.POST, "/players").permitAll()
             .antMatchers(HttpMethod.DELETE, "/users/**").denyAll()
             .antMatchers(HttpMethod.POST, "/servers/**").denyAll()

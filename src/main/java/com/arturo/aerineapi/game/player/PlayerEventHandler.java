@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import com.arturo.aerineapi.security.SecurityService;
+import com.arturo.aerineapi.security.operation.OperationControl;
 import com.arturo.aerineapi.security.operation.OperationSecure;
 
 import org.slf4j.Logger;
@@ -31,6 +32,7 @@ public class PlayerEventHandler {
         String name = String.format("[%s] %s", player.getServer().getName(), UUID.randomUUID().toString());
 
         player.setName(name);
+        player.setLevel(0);
         player.setUser(securityService.getUser());
 
         logger.info("Creating {}", player);
@@ -43,6 +45,7 @@ public class PlayerEventHandler {
     }
 
     @HandleBeforeSave
+    @OperationControl
     public void handleBeforeSave(Player player) {
         logger.info("Updating {}", player);
     }

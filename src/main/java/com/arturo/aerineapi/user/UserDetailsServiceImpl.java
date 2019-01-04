@@ -1,6 +1,9 @@
 package com.arturo.aerineapi.user;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,6 +30,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     user.getCredentialsNonExpired(),
                     user.getAccountNonLocked(),
                     user.getAuthorities());
+        } else {
+        	loged = new User("NOT_AUTH", "NOT_AUTH", new ArrayList<GrantedAuthority>());
         }
 
         return loged;
